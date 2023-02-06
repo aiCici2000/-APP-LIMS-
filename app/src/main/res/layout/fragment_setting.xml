@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="setting"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <ImageView
+        android:id="@+id/f_setting_xiaohui"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/xiaohui_s"
+        app:layout_constraintBottom_toBottomOf="@id/f_imageFile_login"
+        app:layout_constraintEnd_toStartOf="@id/f_imageFile_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/f_imageFile_login" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/f_imageFile_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:background="#13227a"
+        app:layout_constraintBottom_toBottomOf="@id/v"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/f_setting_xiaohui"
+        app:layout_constraintTop_toTopOf="parent"
+        app:round="20dp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/f_setting_login"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="点击登录"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/f_imageFile_login"
+        app:layout_constraintEnd_toEndOf="@id/f_imageFile_login"
+        app:layout_constraintStart_toStartOf="@id/f_imageFile_login"
+        app:layout_constraintTop_toTopOf="@id/f_imageFile_login" />
+
+    <ImageView
+        android:id="@+id/f_setting_profile"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/profile"
+        app:layout_constraintBottom_toBottomOf="@id/f_setting_name"
+        app:layout_constraintEnd_toStartOf="@id/f_setting_name"
+        app:layout_constraintStart_toStartOf="@id/f_imageFile_login"
+        app:layout_constraintTop_toTopOf="@id/f_setting_name" />
+
+    <TextView
+        android:id="@+id/f_setting_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="张三"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/f_setting_number"
+        app:layout_constraintStart_toEndOf="@id/f_setting_profile"
+        app:layout_constraintTop_toTopOf="@id/f_imageFile_login" />
+
+    <TextView
+        android:id="@+id/f_setting_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="190511111"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@id/f_imageFile_login"
+        app:layout_constraintStart_toStartOf="@id/f_setting_name"
+        app:layout_constraintTop_toBottomOf="@id/f_setting_name" />
+
+    <View
+        android:id="@+id/v"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        app:layout_constraintStart_toStartOf="@id/f_imageFile_login"
+        app:layout_constraintEnd_toEndOf="@id/f_imageFile_login"
+        app:layout_constraintTop_toBottomOf="@id/f_setting_number"
+        app:layout_constraintBottom_toBottomOf="@id/f_imageFile_login"/>
+
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/f_imageFile_login"
+        app:layout_constraintEnd_toEndOf="@id/f_imageFile_login"
+        app:layout_constraintTop_toTopOf="@id/f_imageFile_login" />
+
+    <View
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/line"
+        app:layout_constraintTop_toBottomOf="@id/f_imageFile_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+
+    <com.example.lims.widget.SpecialItem
+        android:id="@+id/special_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v1"
+        app:leftIconResource="@drawable/task_management"
+        app:leftText="我的预约" />
+
+    <com.example.lims.widget.SpecialItem
+        android:id="@+id/special_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/special_1"
+        app:leftIconResource="@drawable/calendar"
+        app:leftText="我的课程" />
+
+    <com.example.lims.widget.SpecialItem
+        android:id="@+id/special_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/special_2"
+        app:leftIconResource="@drawable/email"
+        app:leftText="修改绑定邮箱" />
+
+    <com.example.lims.widget.SpecialItem
+        android:id="@+id/special_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/special_3"
+        app:leftIconResource="@drawable/prompt"
+        app:leftText="关于" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

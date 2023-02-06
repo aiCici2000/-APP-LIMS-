@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpecialItem">
+        <attr name="leftTextColor" format="color" />
+        <attr name="rightTextColor" format="color" />
+        <attr name="leftIconResource" format="reference" />
+        <attr name="rightIconResource" format="reference" />
+        <attr name="leftText" format="string" />
+        <attr name="rightTex" format="string" />
+        <attr name="showTopLine" format="boolean" />
+        <attr name="showBottomLine" format="boolean" />
+        <attr name="showLeftIcon" format="boolean" />
+        <attr name="showRightIcon" format="boolean" />
+        <attr name="showEditText" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="MessageItem">
+        <attr name="imageResource1" format="reference" />
+        <attr name="imageResource2" format="reference" />
+        <attr name="text1" format="string" />
+        <attr name="text2" format="string" />
+        <attr name="showSpot" format="boolean" />
+    </declare-styleable>
+
+    <!--加减控件View-->
+    <declare-styleable name="CountClickView">
+        <!--最大值-->
+        <attr name="ccvMax" format="integer" />
+        <!--最小值-->
+        <attr name="ccvMin" format="integer" />
+        <!--当前值-->
+        <attr name="ccvCurrent" format="integer" />
+        <!--是否可输入-->
+        <attr name="ccvInput" format="boolean" />
+        <!--文字颜色-->
+        <attr name="ccvTextColor" format="color|reference" />
+        <!--文字大小-->
+        <attr name="ccvTextSize" format="dimension" />
+        <!--增加按钮资源-->
+        <attr name="ccvAddIcon" format="reference" />
+        <!--减少按钮资源-->
+        <attr name="ccvMinus" format="reference" />
+    </declare-styleable>
+
+    <!--自定义加载框-->
+    <declare-styleable name="LVCircularRing">
+        <attr name="bgColor" format="color" />
+        <attr name="barColor" format="color" />
+    </declare-styleable>
+
+    <!-- 增强输入框-->
+    <declare-styleable name="EnhanceEditText">
+        <attr name="eTextColor" format="color" />
+        <attr name="eTextSize" format="dimension" />
+        <attr name="eHintText" format="string" />
+        <attr name="eHintTextColor" format="color" />
+        <!--输入框左侧icon-->
+        <attr name="eLeftIconFont" format="string" />
+        <attr name="eLeftIconColor" format="color" />
+        <!--清除icon-->
+        <attr name="eCleanIconFont" format="string" />
+        <attr name="eCleanIconColor" format="color" />
+        <!-- 搜搜框背景-->
+        <attr name="eBg" format="color|dimension" />
+        <!--是否显示清除按钮-->
+        <attr name="eShowClean" format="boolean" />
+        <!--是否显示左侧icon-->
+        <attr name="eShowLeft" format="boolean" />
+        <!--是否隐藏背景-->
+        <attr name="eShowBg" format="boolean" />
+        <!--键盘按钮动作-->
+        <attr name="eAction" format="integer">
+            <enum name="none" value="0" />
+            <enum name="search" value="1" />
+            <enum name="next" value="2" />
+            <enum name="done" value="3" />
+        </attr>
+        <!--输入类型-->
+        <attr name="eInputType" format="integer">
+            <enum name="text" value="0" />
+            <enum name="password" value="1" />
+            <enum name="phone" value="2" />
+            <enum name="number" value="3" />
+        </attr>
+        <attr name="eMaxLength" format="integer" />
+        <attr name="eMaxLines" format="integer" />
+    </declare-styleable>
+</resources>

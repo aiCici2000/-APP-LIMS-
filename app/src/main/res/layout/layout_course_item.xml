@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="6dp"
+    android:background="@drawable/item_back_no_checked"
+    android:layout_margin="5dp"
+    android:paddingBottom="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="课程名称："
+        style="@style/TextStyle_gray" />
+
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_1"
+        app:layout_constraintStart_toStartOf="@id/tv_1"
+        android:layout_marginTop="5dp"
+        android:text="任课教师："
+        style="@style/TextStyle_gray" />
+
+    <TextView
+        android:id="@+id/tv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_2"
+        app:layout_constraintStart_toStartOf="@id/tv_2"
+        android:layout_marginTop="5dp"
+        android:text="课程节次："
+        style="@style/TextStyle_gray" />
+
+    <TextView
+        android:id="@+id/tv_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_3"
+        app:layout_constraintStart_toStartOf="@id/tv_3"
+        app:layout_constraintEnd_toEndOf="@id/tv_3"
+        android:layout_marginTop="5dp"
+        android:text="实验室："
+        style="@style/TextStyle_gray" />
+
+    <TextView
+        android:id="@+id/tv_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_1"
+        app:layout_constraintTop_toTopOf="@id/tv_1"
+        app:layout_constraintBottom_toBottomOf="@id/tv_1"
+        android:layout_marginStart="5dp"
+        android:text="计算机网络"
+        style="@style/TextStyle_black_14sp"/>
+
+    <TextView
+        android:id="@+id/tv_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_2"
+        app:layout_constraintTop_toTopOf="@id/tv_2"
+        app:layout_constraintBottom_toBottomOf="@id/tv_2"
+        android:layout_marginStart="5dp"
+        android:text="李誌"
+        style="@style/TextStyle_black_14sp"/>
+
+    <TextView
+        android:id="@+id/tv_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_3"
+        app:layout_constraintTop_toTopOf="@id/tv_3"
+        app:layout_constraintBottom_toBottomOf="@id/tv_3"
+        android:layout_marginStart="5dp"
+        android:text="10月16日"
+        style="@style/TextStyle_black_14sp"/>
+
+    <TextView
+        android:id="@+id/tv_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_7"
+        app:layout_constraintTop_toTopOf="@id/tv_7"
+        app:layout_constraintBottom_toBottomOf="@id/tv_7"
+        android:layout_marginStart="5dp"
+        android:text="第1、2节"
+        style="@style/TextStyle_black_14sp"/>
+
+    <TextView
+        android:id="@+id/tv_9"
+        style="@style/TextStyle_black_14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="南区实训楼301-303"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_4"
+        app:layout_constraintTop_toTopOf="@id/tv_4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

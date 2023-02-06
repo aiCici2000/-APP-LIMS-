@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.lims.view.HomeFragment"
+        android:label="nav_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_laboratory"
+            app:destination="@id/nav_laboratory" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_teacher_list"
+            app:destination="@id/nav_teacher_list" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_other_report"
+            app:destination="@id/nav_other_report" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_ratify_lab_apply"
+            app:destination="@id/nav_ratify_lab_apply" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_ratify_ma_apply"
+            app:destination="@id/nav_ratify_ma_apply" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_ratify_so_apply"
+            app:destination="@id/nav_ratify_so_apply" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_equip_rep_manage"
+            app:destination="@id/nav_equip_rep_manage" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_equip_into"
+            app:destination="@id/nav_equip_into" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_material_num"
+            app:destination="@id/nav_material_num" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_printing"
+            app:destination="@id/nav_printing" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_announcement"
+            app:destination="@id/nav_announcement" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_equip_goto"
+            app:destination="@id/nav_equip_goto" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_experiment_re"
+            app:destination="@id/nav_experiment_re" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_ratify_exper_re"
+            app:destination="@id/nav_ratify_exper_re" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_lab_apply"
+            app:destination="@id/nav_lab_apply" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_material_apply"
+            app:destination="@id/nav_material_apply" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_soft_apply"
+            app:destination="@id/nav_soft_apply" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_all_course"
+            app:destination="@id/nav_all_course" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_message"
+        android:name="com.example.lims.view.MessageFragment"
+        android:label="nav_message"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.lims.view.SettingFragment"
+        android:label="nav_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/nav_laboratory"
+        android:name="com.example.lims.view.LaboratoryFragment"
+        android:label="nav_laboratory"
+        tools:layout="@layout/fragment_laboratory" />
+    <fragment
+        android:id="@+id/nav_teacher_list"
+        android:name="com.example.lims.view.TeacherListFragment"
+        android:label="nav_teacher_list"
+        tools:layout="@layout/fragment_teacher_list" />
+    <fragment
+        android:id="@+id/nav_other_report"
+        android:name="com.example.lims.view.OtherReportFragment"
+        android:label="nav_other_report"
+        tools:layout="@layout/fragment_other_report" >
+        <action
+            android:id="@+id/action_nav_other_report_to_nav_report"
+            app:destination="@id/nav_report" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_ratify_lab_apply"
+        android:name="com.example.lims.view.RatifyLabApplyFragment"
+        android:label="nav_ratify_lab_apply"
+        tools:layout="@layout/fragment_ratify_lab_apply" />
+    <fragment
+        android:id="@+id/nav_ratify_ma_apply"
+        android:name="com.example.lims.view.RatifyMaApplyFragment"
+        android:label="nav_ratify_ma_apply"
+        tools:layout="@layout/fragment_ratify_ma_apply" />
+    <fragment
+        android:id="@+id/nav_ratify_so_apply"
+        android:name="com.example.lims.view.RatifySoApplyFragment"
+        android:label="nav_ratify_so_apply"
+        tools:layout="@layout/fragment_ratify_so_apply" />
+    <fragment
+        android:id="@+id/nav_equip_rep_manage"
+        android:name="com.example.lims.view.EquipRepManageFragment"
+        android:label="nav_equip_rep_manage"
+        tools:layout="@layout/fragment_equip_rep_manage" />
+    <fragment
+        android:id="@+id/nav_equip_into"
+        android:name="com.example.lims.view.EquipIntoFragment"
+        android:label="nav_equip_into"
+        tools:layout="@layout/fragment_equip_into" />
+    <fragment
+        android:id="@+id/nav_equip_goto"
+        android:name="com.example.lims.view.EquipGotoFragment"
+        android:label="nav_equip_goto"
+        tools:layout="@layout/fragment_equip_goto" />
+    <fragment
+        android:id="@+id/nav_material_num"
+        android:name="com.example.lims.view.MaterialNumFragment"
+        android:label="nav_material_num"
+        tools:layout="@layout/fragment_material_num" />
+    <fragment
+        android:id="@+id/nav_announcement"
+        android:name="com.example.lims.view.AnnouncementFragment"
+        android:label="nav_announcement"
+        tools:layout="@layout/fragment_announcement" />
+    <fragment
+        android:id="@+id/nav_printing"
+        android:name="com.example.lims.view.PrintingFragment"
+        android:label="nav_printing"
+        tools:layout="@layout/fragment_printing" />
+    <fragment
+        android:id="@+id/nav_experiment_re"
+        android:name="com.example.lims.view.ExperimentReFragment"
+        android:label="nav_experiment_re"
+        tools:layout="@layout/fragment_experiment_re" />
+    <fragment
+        android:id="@+id/nav_ratify_exper_re"
+        android:name="com.example.lims.view.RatifyExperReFragment"
+        android:label="nav_ratify_exper_re"
+        tools:layout="@layout/fragment_ratify_exper_re"/>
+    <fragment
+        android:id="@+id/nav_lab_apply"
+        android:name="com.example.lims.view.LabApplyFragment"
+        android:label="nav_lab_apply"
+        tools:layout="@layout/fragment_lab_apply" />
+    <fragment
+        android:id="@+id/nav_material_apply"
+        android:name="com.example.lims.view.MaterialApplyFragment"
+        android:label="nav_material_apply"
+        tools:layout="@layout/fragment_material_apply" />
+    <fragment
+        android:id="@+id/nav_soft_apply"
+        android:name="com.example.lims.view.SoftApplyFragment"
+        android:label="nav_soft_apply"
+        tools:layout="@layout/fragment_soft_apply" />
+    <fragment
+        android:id="@+id/nav_report"
+        android:name="com.example.lims.view.ReportFragment"
+        android:label="nav_report"
+        tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/nav_all_course"
+        android:name="com.example.lims.view.AllCourseFragment"
+        android:label="nav_all_course"
+        tools:layout="@layout/fragment_all_course" />
+
+</navigation>
