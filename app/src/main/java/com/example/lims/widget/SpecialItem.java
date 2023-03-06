@@ -73,6 +73,7 @@ public class SpecialItem extends LinearLayout {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.SpecialItem);
         leftIconResource = array.getResourceId(R.styleable.SpecialItem_leftIconResource, leftIconResource);
         leftText = array.getString(R.styleable.SpecialItem_leftText);
+        showBottomLine = array.getBoolean(R.styleable.SpecialItem_showBottomLine, true);
         array.recycle();
         if (isInEditMode()) {
             return;

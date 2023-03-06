@@ -17,8 +17,9 @@ import com.example.lims.MyApplication;
 import com.example.lims.R;
 import com.example.lims.adapter.HomeAdapter;
 import com.example.lims.databinding.FragmentHomeBinding;
-import com.example.lims.model.Constant;
+import com.example.lims.utils.Constant;
 import com.example.lims.model.HomeItem;
+import com.example.lims.repository.SharedPreferencesUtil;
 import com.example.lims.view.base.BaseLoginFragment;
 import com.example.lims.viewmodel.HomeViewModel;
 
@@ -37,6 +38,11 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
     private List<HomeItem> itemList;
     private HomeViewModel homeViewModel;
 
+    private static final int STUDENT_ROLE = 0;
+    private static final int TEACHER_ROLE = 1;
+    private static final int ADMINISTRATOR_ROLE = 2;
+    private static final int DEFAULT_ROLE = -1;
+
     @Override
     protected FragmentHomeBinding getViewBinding(LayoutInflater inflater, ViewGroup container) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -49,8 +55,7 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
         setSentence();
         initObserver();
         networkRequest();
-//        refresh();
-        Constant.initHomeItemAdmin();
+        initRole();
         this.itemList = Constant.itemList;
         initRV();
     }
@@ -65,6 +70,10 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
         });
     }
 
+    public static final int IDLE_STATE = 0;
+    public static final int NON_IDLE_STATE = 1;
+    public static final int All_STATE = 2;
+
     @Override
     public void event() {
         NavController navController = Navigation.findNavController(getView());
@@ -72,28 +81,28 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
         binding.fHomeTv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bundle.putInt("status", 0);
+                bundle.putInt("status", IDLE_STATE);
                 navController.navigate(R.id.action_nav_home_to_nav_laboratory, bundle);
             }
         });
         binding.fHomeTv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bundle.putInt("status", 0);
+                bundle.putInt("status", IDLE_STATE);
                 navController.navigate(R.id.action_nav_home_to_nav_laboratory, bundle);
             }
         });
         binding.fHomeTv4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bundle.putInt("status", 1);
+                bundle.putInt("status", NON_IDLE_STATE);
                 navController.navigate(R.id.action_nav_home_to_nav_laboratory, bundle);
             }
         });
         binding.fHomeTv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bundle.putInt("status", 1);
+                bundle.putInt("status", NON_IDLE_STATE);
                 navController.navigate(R.id.action_nav_home_to_nav_laboratory, bundle);
             }
         });
@@ -118,6 +127,25 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
         binding.fHomeTv1.setText(cur);
     }
 
+    private void initRole() {
+        int type = (int) SharedPreferencesUtil.getData("type", -1);
+        Log.d(TAG, "initRole: " + type);
+        switch (type) {
+            case STUDENT_ROLE:
+                Constant.initHomeItemStudent();
+                break;
+            case TEACHER_ROLE:
+                Constant.initHomeItemTeacher();
+                break;
+            case ADMINISTRATOR_ROLE:
+                Constant.initHomeItemAdmin();
+                break;
+            case DEFAULT_ROLE:
+                Constant.initHomeItem();
+                break;
+        }
+    }
+
     private void initRV() {
         GridLayoutManager layoutManager = new GridLayoutManager(MyApplication.getContext(), 3);
         binding.recyclerview.setLayoutManager(layoutManager);
@@ -134,7 +162,7 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
     private void initItemListener(int position) {
         int action = itemList.get(position).getAction();
         Bundle bundle = new Bundle();
-        bundle.putInt("status", 2);
+        bundle.putInt("status", All_STATE);
         Navigation.findNavController(getView()).navigate(action, bundle);
     }
 
@@ -143,14 +171,6 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
         homeViewModel.getIdleLabNumber().observe(getViewLifecycleOwner(), num -> {
             binding.fHomeTv3.setText(String.valueOf(num));
         });
-//
-//        MutableLiveData<Integer> idleLabNumber = homeViewModel.getIdleLabNumber();
-//        idleLabNumber.observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer integer) {
-//                binding.fHomeTv3.setText(integer + "");
-//            }
-//        });
 
         MutableLiveData<Integer> allCoursesNumber = homeViewModel.getAllCoursesNumber();
         allCoursesNumber.observe(this, new Observer<Integer>() {
@@ -170,7 +190,6 @@ public class HomeFragment extends BaseLoginFragment<FragmentHomeBinding> {
     }
 
     private void networkRequest() {
-        Log.d(TAG, "networkRequest: ");
         homeViewModel.request();
     }
 }

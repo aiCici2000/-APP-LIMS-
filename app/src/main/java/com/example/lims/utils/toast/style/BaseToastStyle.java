@@ -33,7 +33,7 @@ public abstract class BaseToastStyle implements IToastStyle {
 
     @Override
     public int getYOffset() {
-        return 0;
+        return 400;
     }
 
     @Override

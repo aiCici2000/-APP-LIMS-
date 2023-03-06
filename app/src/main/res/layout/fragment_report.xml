@@ -4,35 +4,27 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <View
-        android:id="@+id/v_1"
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
     <TextView
         android:id="@+id/tv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_2"
-        app:layout_constraintBottom_toBottomOf="@id/tv_2"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/TextStyle_gray"
-        android:text="当前实验室："
-        android:layout_marginTop="5dp"
+        android:text="当前实验室"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="10dp" />
 
     <TextView
         android:id="@+id/tv_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/v_1"
-        app:layout_constraintStart_toEndOf="@id/tv_1"
+        app:layout_constraintTop_toBottomOf="@id/tv_1"
+        app:layout_constraintStart_toStartOf="@id/tv_1"
         style="@style/TextStyle2"
         android:textStyle="bold"
         android:text="南区实训楼301-303"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="15dp" />
 
     <View
@@ -48,34 +40,39 @@
         android:id="@+id/tv_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="您的报备信息："
-        app:layout_constraintTop_toBottomOf="@id/tv_1"
+        android:layout_marginTop="10dp"
+        android:text="您的报备信息"
+        app:layout_constraintTop_toBottomOf="@id/v_2"
         app:layout_constraintStart_toStartOf="@id/tv_1" />
 
     <EditText
         android:id="@+id/edit_1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tv_3"
-        app:layout_constraintTop_toTopOf="@id/tv_3"
+        android:layout_height="250dp"
+        app:layout_constraintStart_toStartOf="@id/tv_1"
+        app:layout_constraintTop_toBottomOf="@id/tv_3"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         android:padding="10dp"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:hint="请输入报备信息"
         android:maxLength="200"
+        android:gravity="top"
         android:textColorHint="@color/color_8a8a8a"
         android:background="@drawable/report_edit_back" />
 
     <Button
-        android:id="@+id/button_1"
-        android:layout_width="wrap_content"
+        android:id="@+id/submit_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="提交"
+        android:textSize="16sp"
+        android:layout_marginHorizontal="30dp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="40dp"
-        android:text="提交" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

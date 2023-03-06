@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="点击选择您要申请的实验室"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/bottom_down"
+        android:background="@color/line"
+        android:textSize="14sp"
+        android:gravity="center|start"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="5dp"
+        android:elevation="6dp"
+        android:foreground="?android:attr/selectableItemBackground" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="visible"
+        android:id="@+id/rv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择耗材"
+        android:textColor="@color/bottom_down"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/rv_1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp" />
+
+
+    <View
+        android:id="@+id/v1"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/line"
+        app:layout_constraintTop_toBottomOf="@id/tv_1"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@id/tv_1"
+        android:layout_marginHorizontal="5dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="invisible"
+        android:id="@+id/rv_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

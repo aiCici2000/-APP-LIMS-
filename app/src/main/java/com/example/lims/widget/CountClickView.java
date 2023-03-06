@@ -36,7 +36,7 @@ public class CountClickView extends LinearLayout {
 
     public static final int MIN_COUNT = 0;
     public static final int INIT_COUNT = 1;
-    public static final int MAX_COUNT = 10000;
+    public static final int MAX_COUNT = 100;
 
     TextView tvCount;
     ImageView ivPlus;

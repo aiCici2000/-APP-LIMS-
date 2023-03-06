@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lims.R;
-import com.example.lims.model.Constant;
-import com.example.lims.model.EquipRepItem;
+import com.example.lims.utils.Constant;
+import com.example.lims.model.bean.EquipmentRepData;
 
 import java.util.List;
 
@@ -22,9 +22,19 @@ import java.util.List;
  */
 public class EquipRepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final List<EquipRepItem> list;
+    private final List<EquipmentRepData.DataBean> list;
 
-    public EquipRepAdapter(List<EquipRepItem> list) {
+    private ItemOnClickListener listener = null;
+
+    public void setListener(ItemOnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ItemOnClickListener {
+        void help(int position);
+    }
+
+    public EquipRepAdapter(List<EquipmentRepData.DataBean> list) {
         this.list = list;
     }
 
@@ -33,14 +43,10 @@ public class EquipRepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View dataView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_equip_rep_item, parent, false);
-        View noneView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.no_data_item, parent, false);
         View titleView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_equip_rep_title, parent, false);
         if (viewType == Constant.TITLE) {
             return new TitleViewHolder(titleView);
-        } else if (viewType == Constant.NO_DATA) {
-            return new ContentViewHolder(noneView);
         } else {
             return new ContentViewHolder(dataView);
         }
@@ -49,27 +55,31 @@ public class EquipRepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (position != list.size()) {
-            EquipRepItem item = list.get(position);
+            EquipmentRepData.DataBean item = list.get(position);
             if (holder instanceof ContentViewHolder) {
                 ((ContentViewHolder) holder).name.setText(item.getName());
+                ((ContentViewHolder) holder).viewDetails.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        listener.help(holder.getAdapterPosition());
+                    }
+                });
             } else if (holder instanceof TitleViewHolder) {
-                ((TitleViewHolder) holder).title.setText(item.getLabName());
+                ((TitleViewHolder) holder).title.setText(item.getName());
             }
         }
     }
 
     @Override
     public int getItemCount() {
-        return list.size() + 1;
+        return list.size();
     }
 
+    private static final int TITLE = 0;
     @Override
     public int getItemViewType(int position) {
-        if (position == list.size()) {
-            return Constant.NO_DATA;
-        }
-        EquipRepItem item = list.get(position);
-        if (item.getType() == 0) {
+        EquipmentRepData.DataBean item = list.get(position);
+        if (item.getType() == TITLE) {
             return Constant.TITLE;
         } else {
             return Constant.HAVE_DATA;
@@ -79,10 +89,12 @@ public class EquipRepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static class ContentViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
+        TextView viewDetails;
 
         public ContentViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_1);
+            viewDetails = itemView.findViewById(R.id.tv_2);
         }
     }
 
@@ -93,6 +105,7 @@ public class EquipRepAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public TitleViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tv);
+
         }
     }
 }

@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lims.R;
-import com.example.lims.model.Constant;
-import com.example.lims.model.MaterialItem;
+import com.example.lims.utils.Constant;
+import com.example.lims.model.bean.MaterialData;
 
 import java.util.List;
 
@@ -22,9 +22,20 @@ import java.util.List;
  */
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.ViewHolder> {
 
-    private final List<MaterialItem> itemList;
+    private static final String TAG = "MaterialAdapter";
 
-    public MaterialAdapter(List<MaterialItem> list) {
+    private final List<MaterialData.DataBean> itemList;
+    private ItemOnClickListener listener = null;
+
+    public void setListener(ItemOnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ItemOnClickListener {
+        void help(int position);
+    }
+
+    public MaterialAdapter(List<MaterialData.DataBean> list) {
         this.itemList = list;
     }
 
@@ -45,10 +56,18 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (position != itemList.size()) {
-            MaterialItem item = itemList.get(position);
+            MaterialData.DataBean item = itemList.get(position);
             holder.name.setText(item.getName());
             holder.num.setText(item.getNum()+"");
-            holder.other.setText(item.getOther());
+            String other = item.getOther() + "";
+            holder.other.setText("null".equals(other) ? "无" : other);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.help(holder.getAdapterPosition());
+                }
+            });
         }
     }
 

@@ -1,28 +1,20 @@
 package com.example.lims.view;
 
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewbinding.ViewBinding;
 
 import com.example.lims.MyApplication;
-import com.example.lims.R;
 import com.example.lims.adapter.TeacherAdapter;
 import com.example.lims.databinding.FragmentTeacherListBinding;
 import com.example.lims.model.bean.UserData;
-import com.example.lims.utils.ToastUtils;
 import com.example.lims.utils.net.RetrofitService;
 import com.example.lims.utils.net.RetrofitUtil;
 import com.example.lims.view.base.BaseDialogFragment;
-import com.example.lims.view.base.BaseLoginFragment;
-import com.example.lims.widget.LVCircularRing;
-import com.example.lims.widget.MyToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +27,7 @@ import retrofit2.Response;
  * @Author：李壮
  * @Package：com.example.lims.view
  * @Date：2023/1/12 15:05
- * Describe:
+ * Describe:  师资团队
  */
 public class TeacherListFragment extends BaseDialogFragment<FragmentTeacherListBinding> {
     private static final String TAG = "TeacherListFragment";
@@ -74,6 +66,12 @@ public class TeacherListFragment extends BaseDialogFragment<FragmentTeacherListB
         binding.rv.setLayoutManager(manager);
         Log.d(TAG, "initRecycleView: " + list);
         adapter = new TeacherAdapter(list);
+        adapter.setListener(new TeacherAdapter.ItemOnClickListener() {
+            @Override
+            public void help(int position) {
+
+            }
+        });
         binding.rv.setAdapter(adapter);
     }
 
@@ -102,7 +100,7 @@ public class TeacherListFragment extends BaseDialogFragment<FragmentTeacherListB
             public void onFailure(Call<UserData> call, Throwable t) {
                 dismissLoading();
                 setNoDataPage();
-                Log.d(TAG, "onFailure: "+ binding.iv1);
+                Log.d(TAG, "onFailure: 请求失败！");
             }
         });
     }

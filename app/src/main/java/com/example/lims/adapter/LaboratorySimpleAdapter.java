@@ -1,6 +1,5 @@
 package com.example.lims.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lims.R;
-import com.example.lims.model.LaboratoryItem;
+import com.example.lims.model.bean.LaboratoryData;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ import java.util.List;
 public class LaboratorySimpleAdapter extends RecyclerView.Adapter<LaboratorySimpleAdapter.ViewHolder> {
     private static final String TAG = "LaboratorySimpleAdapter";
 
-    private final List<LaboratoryItem> itemList;
+    private final List<LaboratoryData.DataBean> itemList;
     ItemOnClickListener listener = null;
 
     public interface ItemOnClickListener {
@@ -35,7 +34,7 @@ public class LaboratorySimpleAdapter extends RecyclerView.Adapter<LaboratorySimp
         this.listener = listener;
     }
 
-    public LaboratorySimpleAdapter(List<LaboratoryItem> list) {
+    public LaboratorySimpleAdapter(List<LaboratoryData.DataBean> list) {
         this.itemList = list;
     }
 
@@ -52,8 +51,8 @@ public class LaboratorySimpleAdapter extends RecyclerView.Adapter<LaboratorySimp
     private boolean isFirst = true;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        LaboratoryItem item = itemList.get(position);
-        holder.name.setText(item.getBottomText());
+        LaboratoryData.DataBean item = itemList.get(position);
+        holder.name.setText(item.getName());
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +64,6 @@ public class LaboratorySimpleAdapter extends RecyclerView.Adapter<LaboratorySimp
                     layout.setSelected(false);
                     textView.setSelected(false);
                 }
-                Log.d(TAG, "onClick: " + isFirst);
                 holder.view.setSelected(true);
                 holder.name.setSelected(true);
                 layout = holder.view;

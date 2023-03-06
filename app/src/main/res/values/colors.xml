@@ -35,5 +35,15 @@
     <color name="color_999999">#999999</color>
     <color name="color_f31515">#f31515</color>
     <color name="green">#0cb516</color>
+    <color name="message_green">#55bb0a</color>
+    <color name="message_red">#c30f0f</color>
+
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="line_color">#e7e7e7</color>
+    <color name="content_background">#f2f2f2</color>
+    <color name="solar_background">#009988</color>
 
 </resources>

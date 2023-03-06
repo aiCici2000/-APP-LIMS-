@@ -64,22 +64,49 @@
         <action
             android:id="@+id/action_nav_home_to_nav_all_course"
             app:destination="@id/nav_all_course" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_my_course"
+            app:destination="@id/nav_my_course" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_my_reserve"
+            app:destination="@id/nav_my_reserve" />
     </fragment>
     <fragment
         android:id="@+id/nav_message"
         android:name="com.example.lims.view.MessageFragment"
         android:label="nav_message"
-        tools:layout="@layout/fragment_message" />
+        tools:layout="@layout/fragment_message" >
+        <action
+            android:id="@+id/action_nav_message_to_nav_message_item"
+            app:destination="@id/nav_message_item" />
+    </fragment>
     <fragment
         android:id="@+id/nav_setting"
         android:name="com.example.lims.view.SettingFragment"
         android:label="nav_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_nav_message_to_nav_login"
+            app:destination="@id/nav_login" />
+        <action
+            android:id="@+id/action_nav_setting_to_nav_change_password"
+            app:destination="@id/nav_change_password" />
+        <action
+            android:id="@+id/action_nav_setting_to_nav_change_email"
+            app:destination="@id/nav_change_email" />
+        <action
+            android:id="@+id/action_nav_setting_to_nav_about"
+            app:destination="@id/nav_about" />
+    </fragment>
     <fragment
         android:id="@+id/nav_laboratory"
         android:name="com.example.lims.view.LaboratoryFragment"
         android:label="nav_laboratory"
-        tools:layout="@layout/fragment_laboratory" />
+        tools:layout="@layout/fragment_laboratory" >
+        <action
+            android:id="@+id/action_nav_laboratory_to_nav_laboratory_2"
+            app:destination="@id/nav_laboratory_2" />
+    </fragment>
     <fragment
         android:id="@+id/nav_teacher_list"
         android:name="com.example.lims.view.TeacherListFragment"
@@ -128,7 +155,11 @@
         android:id="@+id/nav_material_num"
         android:name="com.example.lims.view.MaterialNumFragment"
         android:label="nav_material_num"
-        tools:layout="@layout/fragment_material_num" />
+        tools:layout="@layout/fragment_material_num" >
+        <action
+            android:id="@+id/action_nav_material_num_to_nav_add_material"
+            app:destination="@id/nav_add_material" />
+    </fragment>
     <fragment
         android:id="@+id/nav_announcement"
         android:name="com.example.lims.view.AnnouncementFragment"
@@ -143,7 +174,11 @@
         android:id="@+id/nav_experiment_re"
         android:name="com.example.lims.view.ExperimentReFragment"
         android:label="nav_experiment_re"
-        tools:layout="@layout/fragment_experiment_re" />
+        tools:layout="@layout/fragment_experiment_re" >
+        <action
+            android:id="@+id/action_nav_experiment_re_to_nav_experiment_re_2"
+            app:destination="@id/nav_experiment_re_2" />
+    </fragment>
     <fragment
         android:id="@+id/nav_ratify_exper_re"
         android:name="com.example.lims.view.RatifyExperReFragment"
@@ -153,12 +188,20 @@
         android:id="@+id/nav_lab_apply"
         android:name="com.example.lims.view.LabApplyFragment"
         android:label="nav_lab_apply"
-        tools:layout="@layout/fragment_lab_apply" />
+        tools:layout="@layout/fragment_lab_apply" >
+        <action
+            android:id="@+id/action_nav_lab_apply_to_nav_lab_apply_2"
+            app:destination="@id/nav_lab_apply_2" />
+    </fragment>
     <fragment
         android:id="@+id/nav_material_apply"
         android:name="com.example.lims.view.MaterialApplyFragment"
         android:label="nav_material_apply"
-        tools:layout="@layout/fragment_material_apply" />
+        tools:layout="@layout/fragment_material_apply" >
+        <action
+            android:id="@+id/action_nav_material_apply_to_nav_material_apply_2"
+            app:destination="@id/nav_material_apply_2" />
+    </fragment>
     <fragment
         android:id="@+id/nav_soft_apply"
         android:name="com.example.lims.view.SoftApplyFragment"
@@ -174,5 +217,78 @@
         android:name="com.example.lims.view.AllCourseFragment"
         android:label="nav_all_course"
         tools:layout="@layout/fragment_all_course" />
-
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.lims.view.LoginFragment"
+        android:label="nav_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_nav_login_report_to_nav_setting"
+            app:destination="@id/nav_setting" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_change_password"
+        android:name="com.example.lims.view.ChangePasswordFragment"
+        android:label="nav_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/nav_change_email"
+        android:name="com.example.lims.view.ChangeEmailFragment"
+        android:label="nav_change_email"
+        tools:layout="@layout/fragment_change_email" />
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.example.lims.view.AboutFragment"
+        android:label="nav_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/nav_message_item"
+        android:name="com.example.lims.view.MessageItemFragment"
+        android:label="nav_message_item"
+        tools:layout="@layout/fragment_message_item" >
+    </fragment>
+    <fragment
+        android:id="@+id/nav_lab_apply_2"
+        android:name="com.example.lims.view.LabApply2Fragment"
+        android:label="nav_lab_apply_2"
+        tools:layout="@layout/fragment_lab_apply_2" />
+    <fragment
+        android:id="@+id/nav_add_material"
+        android:name="com.example.lims.view.AddMaterialFragment"
+        android:label="nav_add_material"
+        tools:layout="@layout/fragment_add_material" />
+    <fragment
+        android:id="@+id/nav_material_apply_2"
+        android:name="com.example.lims.view.MaterialApply2Fragment"
+        android:label="nav_material_apply_2"
+        tools:layout="@layout/fragment_material_apply_2" />
+    <fragment
+        android:id="@+id/nav_laboratory_2"
+        android:name="com.example.lims.view.LaboratoryFragment2"
+        android:label="nav_laboratory_2"
+        tools:layout="@layout/fragment_laboratory_2" >
+        <action
+            android:id="@+id/action_nav_laboratory_2_to_nav_laboratory_3"
+            app:destination="@id/nav_laboratory_3" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_laboratory_3"
+        android:name="com.example.lims.view.LaboratoryFragment3"
+        android:label="nav_laboratory_3"
+        tools:layout="@layout/fragment_laboratory_3" />
+    <fragment
+        android:id="@+id/nav_my_course"
+        android:name="com.example.lims.view.MyCourseFragment"
+        android:label="nav_my_course"
+        tools:layout="@layout/fragment_my_course" />
+    <fragment
+        android:id="@+id/nav_my_reserve"
+        android:name="com.example.lims.view.MyReservationFragment"
+        android:label="nav_my_reserve"
+        tools:layout="@layout/fragment_my_reserve" />
+    <fragment
+        android:id="@+id/nav_experiment_re_2"
+        android:name="com.example.lims.view.ExperimentReFragment2"
+        android:label="nav_experiment_re_2"
+        tools:layout="@layout/fragment_experiment_re_2" />
 </navigation>

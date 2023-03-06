@@ -41,7 +41,7 @@
         app:round="20dp" />
 
     <TextView
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/f_setting_login"
         android:layout_width="150dp"
         android:layout_height="80dp"
@@ -54,6 +54,12 @@
         app:layout_constraintStart_toStartOf="@id/f_imageFile_login"
         app:layout_constraintTop_toTopOf="@id/f_imageFile_login" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/login_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="f_setting_profile,f_setting_name,f_setting_number" />
     <ImageView
         android:id="@+id/f_setting_profile"
         android:layout_width="20dp"
@@ -123,8 +129,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v1"
-        app:leftIconResource="@drawable/task_management"
-        app:leftText="我的预约" />
+        app:leftIconResource="@drawable/password"
+        app:leftText="修改密码" />
 
     <com.example.lims.widget.SpecialItem
         android:id="@+id/special_2"
@@ -132,8 +138,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/special_1"
-        app:leftIconResource="@drawable/calendar"
-        app:leftText="我的课程" />
+        app:leftIconResource="@drawable/email"
+        app:leftText="绑定邮箱" />
 
     <com.example.lims.widget.SpecialItem
         android:id="@+id/special_3"
@@ -141,16 +147,28 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/special_2"
-        app:leftIconResource="@drawable/email"
-        app:leftText="修改绑定邮箱" />
+        app:leftIconResource="@drawable/prompt"
+        app:showBottomLine="true"
+        app:leftText="关于" />
 
-    <com.example.lims.widget.SpecialItem
-        android:id="@+id/special_4"
+    <View
+        android:visibility="gone"
+        android:id="@+id/v2"
         android:layout_width="match_parent"
+        android:layout_height="17dp"
+        android:background="@color/line"
+        app:layout_constraintTop_toBottomOf="@id/special_3" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/special_3"
-        app:leftIconResource="@drawable/prompt"
-        app:leftText="关于" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginHorizontal="15dp"
+        android:text="退出登录"
+        android:textSize="18sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

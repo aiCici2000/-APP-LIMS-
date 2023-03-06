@@ -26,15 +26,6 @@ public abstract class BaseDialogFragment<T extends ViewBinding> extends BaseLogi
     }
 
     /**
-     * 加载框是否可以取消
-     *
-     * @return boolean
-     */
-    protected boolean loadingCancelable() {
-        return true;
-    }
-
-    /**
      * 显示加载框
      */
     public void showLoading() {

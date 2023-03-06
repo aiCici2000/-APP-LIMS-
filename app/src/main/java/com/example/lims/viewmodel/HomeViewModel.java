@@ -7,11 +7,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.lims.model.bean.CourseData;
 import com.example.lims.model.bean.LaboratoryData;
-import com.example.lims.utils.ToastUtils;
 import com.example.lims.utils.net.RetrofitService;
 import com.example.lims.utils.net.RetrofitUtil;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,7 +64,7 @@ public class HomeViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<LaboratoryData> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: 请求失败！");
             }
         });
     }
@@ -89,7 +86,7 @@ public class HomeViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<LaboratoryData> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: 请求失败！");
             }
         });
     }

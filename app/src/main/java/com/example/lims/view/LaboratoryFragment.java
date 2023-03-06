@@ -1,10 +1,15 @@
 package com.example.lims.view;
 
+import static com.example.lims.view.HomeFragment.All_STATE;
+
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewbinding.ViewBinding;
 
@@ -12,14 +17,10 @@ import com.example.lims.MyApplication;
 import com.example.lims.R;
 import com.example.lims.adapter.LaboratoryAdapter;
 import com.example.lims.databinding.FragmentLaboratoryBinding;
-import com.example.lims.model.LaboratoryItem;
 import com.example.lims.model.bean.LaboratoryData;
-import com.example.lims.utils.ToastUtils;
 import com.example.lims.utils.net.RetrofitService;
 import com.example.lims.utils.net.RetrofitUtil;
 import com.example.lims.view.base.BaseDialogFragment;
-import com.example.lims.view.base.BaseLoginFragment;
-import com.example.lims.widget.MyToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ import retrofit2.Response;
  * @Author：李壮
  * @Package：com.example.lims.view
  * @Date：2023/1/12 9:22
- * Describe:
+ * Describe: 实验室列表
  */
 public class LaboratoryFragment extends BaseDialogFragment<FragmentLaboratoryBinding> {
 
@@ -41,6 +42,8 @@ public class LaboratoryFragment extends BaseDialogFragment<FragmentLaboratoryBin
     private final List<LaboratoryData.DataBean> list = new ArrayList<>();
     private LaboratoryAdapter adapter;
     private Call<LaboratoryData> dataList;
+    private LaboratoryData.DataBean item;
+    private RetrofitService service;
 
     @Override
     protected ViewBinding getViewBinding(LayoutInflater inflater, ViewGroup container) {
@@ -52,6 +55,7 @@ public class LaboratoryFragment extends BaseDialogFragment<FragmentLaboratoryBin
     public void init() {
         Log.d(TAG, "init: ");
         showLoading();
+        service = RetrofitUtil.getRetrofit().create(RetrofitService.class);
         initLaboratoryItem(getArguments().getInt("status"));
         initRecycleView();
     }
@@ -68,8 +72,7 @@ public class LaboratoryFragment extends BaseDialogFragment<FragmentLaboratoryBin
     }
 
     private void initLaboratoryItem(int status) {
-        RetrofitService service = RetrofitUtil.getRetrofit().create(RetrofitService.class);
-        if (status == 2) {
+        if (status == All_STATE) {
             dataList = service.getAllLabList();
         } else {
             dataList = service.getLabList(status);
@@ -96,6 +99,7 @@ public class LaboratoryFragment extends BaseDialogFragment<FragmentLaboratoryBin
             public void onFailure(Call<LaboratoryData> call, Throwable t) {
                 dismissLoading();
                 setNoDataPage();
+                Log.d(TAG, "onFailure: 请求失败！");
             }
         });
     }
@@ -108,7 +112,20 @@ public class LaboratoryFragment extends BaseDialogFragment<FragmentLaboratoryBin
         adapter.setListener(new LaboratoryAdapter.ItemOnClickListener() {
             @Override
             public void help(int position) {
-                initItemListener(position);
+                item = list.get(position);
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("labId", item.getId());
+                bundle.putString("labName", item.getName());
+                bundle.putString("labNumber", item.getNumber());
+
+                bundle.putInt("adminId", item.getAdministratorId());
+                bundle.putString("summary", item.getSummary());
+                bundle.putString("course", item.getCourse() + "");
+                bundle.putString("equipmentNum", item.getEquipmentNum() + "");
+                bundle.putString("notice", item.getNotice() + "");
+                NavController controller = Navigation.findNavController(requireView());
+                controller.navigate(R.id.action_nav_laboratory_to_nav_laboratory_2, bundle);
             }
         });
         binding.rv.setAdapter(adapter);
@@ -119,8 +136,4 @@ public class LaboratoryFragment extends BaseDialogFragment<FragmentLaboratoryBin
         binding.ivNoData.setVisibility(View.VISIBLE);
     }
 
-    //TODO 设置监听，跳转至三级页面
-    private void initItemListener(int position) {
-        Log.d(TAG, "initItemListener: ");
-    }
 }

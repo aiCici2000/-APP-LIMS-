@@ -82,7 +82,7 @@
         style="@style/TextStyle_black_14sp" />
 
     <TextView
-        android:id="@id/tv_8"
+        android:id="@+id/tv_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2023/1/22"

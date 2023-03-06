@@ -12,7 +12,7 @@ import com.example.lims.view.base.BaseLoginFragment;
  * @Author：李壮
  * @Package：com.example.lims.view
  * @Date：2023/1/12 16:39
- * Describe:
+ * Describe:  打印
  */
 public class PrintingFragment extends BaseLoginFragment {
 

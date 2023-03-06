@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lims.R;
-import com.example.lims.model.Constant;
-import com.example.lims.model.RatifyMaApplyItem;
+import com.example.lims.utils.Constant;
+import com.example.lims.model.bean.ApplicationData;
 import com.example.lims.utils.DateUtil;
 
 import java.util.List;
@@ -25,9 +25,18 @@ import java.util.List;
 public class RatifyMaApplyAdapter extends RecyclerView.Adapter<RatifyMaApplyAdapter.ViewHolder> {
     private static final String TAG = "RatifyMaApplyAdapter";
 
-    private final List<RatifyMaApplyItem> list;
+    private final List<ApplicationData.DataBean> list;
+    ItemOnClickListener listener = null;
 
-    public RatifyMaApplyAdapter(List<RatifyMaApplyItem> list) {
+    public void setItemOnClickListener(ItemOnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ItemOnClickListener {
+        void help(int position);
+    }
+
+    public RatifyMaApplyAdapter(List<ApplicationData.DataBean> list) {
         this.list = list;
     }
 
@@ -56,21 +65,32 @@ public class RatifyMaApplyAdapter extends RecyclerView.Adapter<RatifyMaApplyAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (position != list.size()) {
-            RatifyMaApplyItem item = list.get(position);
+            ApplicationData.DataBean item = list.get(position);
             holder.materialName.setText(item.getMaterialName());
             holder.num.setText(item.getNum()+"");
-            holder.applyName.setText(item.getApplyName());
+            holder.applicantName.setText(item.getApplyName());
             holder.time.setText(DateUtil.getTime(item.getTime()));
             switch (item.getStatus()) {
                 case 0:
-                    holder.iv.setBackgroundResource(R.drawable.no_pass);
+                    holder.passed_or_not.setBackgroundResource(R.drawable.no_pass);
+                    holder.to_approve.setVisibility(View.GONE);
+                    holder.passed_or_not.setVisibility(View.VISIBLE);
                     break;
                 case 1:
-                    holder.iv.setBackgroundResource(R.drawable.pass);
+                    holder.passed_or_not.setBackgroundResource(R.drawable.pass);
+                    holder.to_approve.setVisibility(View.GONE);
+                    holder.passed_or_not.setVisibility(View.VISIBLE);
                     break;
                 case 2:
-                    holder.iv.setVisibility(View.GONE);
-                    holder.tv.setVisibility(View.VISIBLE);
+                    holder.passed_or_not.setVisibility(View.GONE);
+                    holder.to_approve.setVisibility(View.VISIBLE);
+                    holder.to_approve.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            listener.help(holder.getAdapterPosition());
+                        }
+                    });
+                    break;
             }
         }
     }
@@ -84,21 +104,21 @@ public class RatifyMaApplyAdapter extends RecyclerView.Adapter<RatifyMaApplyAdap
 
         TextView materialName;
         TextView num;
-        TextView applyName;
+        TextView applicantName;
         TextView time;
 
-        TextView tv;
-        ImageView iv;
+        TextView to_approve;
+        ImageView passed_or_not;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             materialName = itemView.findViewById(R.id.tv_6);
             num = itemView.findViewById(R.id.tv_7);
-            applyName = itemView.findViewById(R.id.tv_8);
+            applicantName = itemView.findViewById(R.id.tv_8);
             time = itemView.findViewById(R.id.tv_9);
 
-            tv = itemView.findViewById(R.id.tv_10);
-            iv = itemView.findViewById(R.id.iv_1);
+            to_approve = itemView.findViewById(R.id.tv_10);
+            passed_or_not = itemView.findViewById(R.id.iv_1);
         }
     }
 

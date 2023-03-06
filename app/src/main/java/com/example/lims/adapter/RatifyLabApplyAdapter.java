@@ -1,5 +1,6 @@
 package com.example.lims.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lims.R;
-import com.example.lims.model.Constant;
-import com.example.lims.model.RatifyLabApplyItem;
+import com.example.lims.utils.Constant;
+import com.example.lims.model.bean.ReservationData;
 import com.example.lims.utils.CourseUtil;
 import com.example.lims.utils.DateUtil;
 
@@ -25,9 +26,19 @@ import java.util.List;
  */
 public class RatifyLabApplyAdapter extends RecyclerView.Adapter<RatifyLabApplyAdapter.ViewHolder> {
 
-    private final List<RatifyLabApplyItem> list;
+    private static final String TAG = "RatifyLabApplyAdapter";
+    private final List<ReservationData.DataBean> list;
+    ItemOnClickListener listener = null;
 
-    public RatifyLabApplyAdapter(List<RatifyLabApplyItem> list) {
+    public void setItemOnClickListener(ItemOnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ItemOnClickListener {
+        void help(int position);
+    }
+
+    public RatifyLabApplyAdapter(List<ReservationData.DataBean> list) {
         this.list = list;
     }
 
@@ -56,23 +67,35 @@ public class RatifyLabApplyAdapter extends RecyclerView.Adapter<RatifyLabApplyAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (position != list.size()) {
-            RatifyLabApplyItem item = list.get(position);
-            holder.labNum.setText(item.getLabNum());
-            holder.date.setText(DateUtil.getTimeShort(item.getDate()));
-            holder.courseNum.setText(CourseUtil.getCourseNum(item.getCourseNum()));
+            ReservationData.DataBean item = list.get(position);
+            holder.labNum.setText(item.getLabNumber());
+            holder.date.setText(DateUtil.getTimeShort(item.getTime()));
+            holder.courseNum.setText(CourseUtil.getCourseNum(item.getCourseNumber()));
             holder.courseName.setText(item.getCourseName());
-            holder.applyName.setText(item.getApplyName());
+            holder.applicantName.setText(item.getApplicantName());
             holder.time.setText(DateUtil.getTime(item.getTime()));
+            Log.d(TAG,"-- onBindViewHolder --" + item.getStatus());
             switch (item.getStatus()) {
                 case 0:
-                    holder.iv.setBackgroundResource(R.drawable.no_pass);
+                    holder.passed_or_not.setBackgroundResource(R.drawable.no_pass);
+                    holder.to_approve.setVisibility(View.GONE);
+                    holder.passed_or_not.setVisibility(View.VISIBLE);
                     break;
                 case 1:
-                    holder.iv.setBackgroundResource(R.drawable.pass);
+                    holder.passed_or_not.setBackgroundResource(R.drawable.pass);
+                    holder.to_approve.setVisibility(View.GONE);
+                    holder.passed_or_not.setVisibility(View.VISIBLE);
                     break;
                 case 2:
-                    holder.iv.setVisibility(View.GONE);
-                    holder.tv.setVisibility(View.VISIBLE);
+                    holder.passed_or_not.setVisibility(View.GONE);
+                    holder.to_approve.setVisibility(View.VISIBLE);
+                    holder.to_approve.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            listener.help(holder.getAdapterPosition());
+                        }
+                    });
+                    break;
             }
         }
     }
@@ -88,11 +111,11 @@ public class RatifyLabApplyAdapter extends RecyclerView.Adapter<RatifyLabApplyAd
         TextView date;
         TextView courseNum;
         TextView courseName;
-        TextView applyName;
+        TextView applicantName;
         TextView time;
 
-        TextView tv;
-        ImageView iv;
+        TextView to_approve;
+        ImageView passed_or_not;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,10 +123,10 @@ public class RatifyLabApplyAdapter extends RecyclerView.Adapter<RatifyLabApplyAd
             date = itemView.findViewById(R.id.tv_8);
             courseNum = itemView.findViewById(R.id.tv_9);
             courseName = itemView.findViewById(R.id.tv_10);
-            applyName = itemView.findViewById(R.id.tv_11);
+            applicantName = itemView.findViewById(R.id.tv_11);
             time = itemView.findViewById(R.id.tv_6);
-            tv = itemView.findViewById(R.id.tv_12);
-            iv = itemView.findViewById(R.id.iv_1);
+            to_approve = itemView.findViewById(R.id.tv_12);
+            passed_or_not = itemView.findViewById(R.id.iv_1);
         }
     }
 

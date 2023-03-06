@@ -7,31 +7,32 @@
 
 
     <ImageView
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/f_message_none"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/no_message"
+        android:background="@drawable/no_net"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/tv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="当前没有消息"
+        android:text="暂无信号"
         android:textColor="@color/bottom_up"
         app:layout_constraintTop_toBottomOf="@id/f_message_none"
         app:layout_constraintStart_toStartOf="@id/f_message_none"
         app:layout_constraintEnd_toEndOf="@id/f_message_none" />
 
     <com.example.lims.widget.MessageItem
+        android:visibility="gone"
         android:id="@+id/f_message_i1"
         app:text1="预约申请"
-        app:text2="王老师向您申请实验室"
+        app:text2="点击查看预约申请相关的消息..."
         app:imageResource1="@drawable/message_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,9 +40,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.example.lims.widget.MessageItem
+        android:visibility="gone"
         android:id="@+id/f_message_i2"
-        app:text1="耗材申请"
-        app:text2="王老师向您申请实验耗材"
+        app:text1="耗材及软件申请"
+        app:text2="点击查看耗材与软件申请相关的消息..."
         app:imageResource1="@drawable/message_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,9 +51,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.example.lims.widget.MessageItem
+        android:visibility="gone"
         android:id="@+id/f_message_i3"
         app:text1="其他报备"
-        app:text2="李老师您好，实验室403的第三排倒数第四个和第五个电脑的桌子有损坏的情况"
+        app:text2="点击查看报备相关的消息..."
         app:imageResource1="@drawable/message_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,9 +62,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.example.lims.widget.MessageItem
+        android:visibility="gone"
         android:id="@+id/f_message_i4"
         app:text1="维修意见"
-        app:text2="张同学向您提出设备维护意见"
+        app:text2="点击查看设备维修意见..."
         app:imageResource1="@drawable/message_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

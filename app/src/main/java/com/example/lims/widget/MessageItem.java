@@ -39,7 +39,7 @@ public class MessageItem extends ConstraintLayout {
     private int imageResource2 = R.color.color_f31515;
     private String text1 = "";
     private String text2 = "";
-    private boolean showSpot = true;
+    private boolean showSpot = false;
 
 
     public MessageItem(@NonNull Context context) {
@@ -57,7 +57,7 @@ public class MessageItem extends ConstraintLayout {
         imageResource2 = array.getResourceId(R.styleable.MessageItem_imageResource2, imageResource2);
         text1 = array.getString(R.styleable.MessageItem_text1);
         text2 = array.getString(R.styleable.MessageItem_text2);
-        showSpot = array.getBoolean(R.styleable.MessageItem_showSpot, true);
+        showSpot = array.getBoolean(R.styleable.MessageItem_showSpot, false);
         array.recycle();
         if (isInEditMode()) {
             Log.d(TAG, "MessageItem: ");
@@ -84,28 +84,28 @@ public class MessageItem extends ConstraintLayout {
         setShowSpot(showSpot);
     }
 
-    private MessageItem setImageResource1(int resId) {
+    public MessageItem setImageResource1(int resId) {
         this.iv1.setBackgroundResource(resId);
         return this;
     }
 
-    private MessageItem setImageResource2(int resId) {
+    public MessageItem setImageResource2(int resId) {
         this.iv2.setBackgroundResource(resId);
         return this;
     }
 
-    private MessageItem setText1(String text) {
+    public MessageItem setText1(String text) {
         this.tv1.setText(text);
         return this;
     }
 
-    private MessageItem setText2(String text) {
+    public MessageItem setText2(String text) {
         this.tv2.setText(text);
         return this;
     }
 
-    private MessageItem setShowSpot(boolean b) {
-        this.iv1.setVisibility(b ? VISIBLE : GONE);
+    public MessageItem setShowSpot(boolean b) {
+        this.iv2.setVisibility(b ? VISIBLE : GONE);
         return this;
     }
 }

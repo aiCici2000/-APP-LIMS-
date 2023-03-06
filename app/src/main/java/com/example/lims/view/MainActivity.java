@@ -1,22 +1,22 @@
 package com.example.lims.view;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-import static com.example.lims.model.Constant.ALL_COURSE;
-import static com.example.lims.model.Constant.ANNOUNCEMENT;
-import static com.example.lims.model.Constant.EQUIPMENT_GOTO_MANAGE;
-import static com.example.lims.model.Constant.EQUIPMENT_INTO_MANAGE;
-import static com.example.lims.model.Constant.EQUIPMENT_REPAIR_MANAGE;
-import static com.example.lims.model.Constant.HOME;
-import static com.example.lims.model.Constant.LABORATORY_LIST;
-import static com.example.lims.model.Constant.MATERIAL_NUMBER;
-import static com.example.lims.model.Constant.MESSAGE;
-import static com.example.lims.model.Constant.OTHER_REPORT;
-import static com.example.lims.model.Constant.RATIFY_LABORATORY_APPLY;
-import static com.example.lims.model.Constant.RATIFY_MATERIAL_APPLY;
-import static com.example.lims.model.Constant.RATIFY_SOFTWARE_APPLY;
-import static com.example.lims.model.Constant.SETTING;
-import static com.example.lims.model.Constant.STATISTICS_PRINTING;
-import static com.example.lims.model.Constant.TEACHER_LIST;
+import static com.example.lims.utils.Constant.ALL_COURSE;
+import static com.example.lims.utils.Constant.ANNOUNCEMENT;
+import static com.example.lims.utils.Constant.EQUIPMENT_GOTO_MANAGE;
+import static com.example.lims.utils.Constant.EQUIPMENT_INTO_MANAGE;
+import static com.example.lims.utils.Constant.EQUIPMENT_REPAIR_MANAGE;
+import static com.example.lims.utils.Constant.HOME;
+import static com.example.lims.utils.Constant.LABORATORY_LIST;
+import static com.example.lims.utils.Constant.MATERIAL_NUMBER;
+import static com.example.lims.utils.Constant.MESSAGE;
+import static com.example.lims.utils.Constant.OTHER_REPORT;
+import static com.example.lims.utils.Constant.RATIFY_LABORATORY_APPLY;
+import static com.example.lims.utils.Constant.RATIFY_MATERIAL_APPLY;
+import static com.example.lims.utils.Constant.RATIFY_SOFTWARE_APPLY;
+import static com.example.lims.utils.Constant.SETTING;
+import static com.example.lims.utils.Constant.STATISTICS_PRINTING;
+import static com.example.lims.utils.Constant.TEACHER_LIST;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -30,11 +30,11 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
@@ -42,6 +42,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.lims.R;
 import com.example.lims.databinding.ActivityMainBinding;
+import com.example.lims.viewmodel.LoginViewModel;
 import com.example.lims.widget.MyToast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public ActivityMainBinding mViewBinding;
     public MyToast myToast;
+    private LoginViewModel viewModel;
 
     @SuppressLint("ResourceType")
     @Override
@@ -81,16 +83,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         myToast = new MyToast(this, "加载中...");
+        viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         initNav();
     }
-
-
 
     private void initNav() {
 
         // 获取 NavController
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        // FragmentContainerView 获取 NavController时有坑
+        //TODO FragmentContainerView 获取 NavController时有坑
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
@@ -162,6 +163,70 @@ public class MainActivity extends AppCompatActivity {
                         mViewBinding.toolbarTitle.setText(ALL_COURSE);
                         mViewBinding.bottomNav.setVisibility(View.GONE);
                         break;
+                    case R.id.nav_login:
+                        mViewBinding.toolbarTitle.setText("");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_change_password:
+                        mViewBinding.toolbarTitle.setText("");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_change_email:
+                        mViewBinding.toolbarTitle.setText("");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_about:
+                        mViewBinding.toolbarTitle.setText("关于");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_message_item:
+                        mViewBinding.toolbarTitle.setText("消息");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_ratify_exper_re:
+                        mViewBinding.toolbarTitle.setText("审批实验预约");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_lab_apply:
+                        mViewBinding.toolbarTitle.setText("申请实验室");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_material_apply:
+                        mViewBinding.toolbarTitle.setText("申请材料");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_soft_apply:
+                        mViewBinding.toolbarTitle.setText("申请设备软件");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_lab_apply_2:
+                        mViewBinding.toolbarTitle.setText("申请实验室");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_add_material:
+                        mViewBinding.toolbarTitle.setText("添加耗材");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_laboratory_2:
+                        mViewBinding.toolbarTitle.setText("实验室详情");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_laboratory_3:
+                        mViewBinding.toolbarTitle.setText("设备报修");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_experiment_re:
+                        mViewBinding.toolbarTitle.setText("实验预约");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_my_course:
+                        mViewBinding.toolbarTitle.setText("我的课程");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
+                    case R.id.nav_my_reserve:
+                        mViewBinding.toolbarTitle.setText("我的预约");
+                        mViewBinding.bottomNav.setVisibility(View.GONE);
+                        break;
                 }
             }
         });
@@ -172,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
         clearToast(bottomNavigationView);
     }
 
+    // 在返回页面时，关闭 加载中 Toast
     @Override
     public void onBackPressed() {
         if (myToast != null) {
@@ -235,5 +301,13 @@ public class MainActivity extends AppCompatActivity {
                 im.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);
             }
         }
+    }
+
+    public boolean getLoginFlag() {
+        return Boolean.TRUE.equals(viewModel.getIsLogin().getValue());
+    }
+
+    public void setLoginFlag(boolean loginFlag) {
+        viewModel.getIsLogin().postValue(loginFlag);
     }
 }

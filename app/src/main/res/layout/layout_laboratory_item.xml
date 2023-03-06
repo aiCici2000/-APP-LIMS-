@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/lab_item_back"
-        android:text="南区实训楼301-303"
+        android:text="信息系统与理论"
         android:textSize="14sp"
         android:textStyle="bold"
         android:padding="5dp"
@@ -26,12 +26,14 @@
         android:id="@+id/tv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="信息系统与理论"
+        android:text="南区实训楼301-303"
         style="@style/TextStyle"
         android:textColor="@color/color_666666"
         app:layout_constraintTop_toBottomOf="@id/tv_2"
         app:layout_constraintStart_toStartOf="@id/tv_2"
-        android:layout_marginTop="10dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"/>
 
     <ImageView
         android:id="@+id/iv_1"
@@ -39,8 +41,8 @@
         android:layout_height="20dp"
         android:background="@drawable/shiyongzhong"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_2"
+        app:layout_constraintBottom_toBottomOf="@id/tv_2"
         android:layout_marginEnd="20dp" />
 
 
